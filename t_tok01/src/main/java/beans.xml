@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns = "http://www.springframework.org/schema/beans"
+	xmlns:xsi = "http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation = "http://www.springframework.org/schema/beans
+	http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+	http://www.springframework.org/schema/aop
+        https://www.springframework.org/schema/aop/spring-aop.xsd
+     http://www.springframework.org/schema/context
+        https://www.springframework.org/schema/context/spring-context.xsd   
+        ">
+	
+
+ 	<bean id = "helloWorld" class = "t_tok01.HelloWorld">
+ 	<property name ="message" value = "spring Hello!" />
+ 	</bean>
+ 
+ 	<bean id="battery" class="t_tok02.Battery">
+	 <property name="name" value="스프링으로 산 배터리 - 세터"></property>
+ 	</bean>
+ 	
+ 	<bean id="battery2" class="t_tok02.Battery">
+ 		<constructor-arg name ="name" value="스프링으로 산 배터리 - 생성자"></constructor-arg>
+ 	
+ 	</bean>
+ 	
+ 	<bean id="blackphone" class="t_tok02.BlackPhone">
+ 		<constructor-arg ref="battery2"></constructor-arg>
+ 	</bean>
+
+
+	<!-- 핵심로직인 ItemTarget을 bean으로 설정 -->
+	<bean id="itemTarget" class="t_tok03.ItemTarget"></bean>
+	
+	<bean id="goodsTarget" class="t_tok03.GoodsTarget"></bean>
+	<!-- 관점로직인 LoggingAdvice를 bean으로 설정 -->
+	<bean id="LoggingAdvice" class="t_tok03.LoggingAdvice"></bean>
+	
+	<aop:config>
+		<aop:aspect ref="LoggingAdvice">
+			<aop:before method="beforeAdvice" pointcut="execution(* t_tok03.ItemTarget.*())"/>
+			<aop:before method="beforeBuyConfirm" pointcut="execution(* t_tok03.ItemTarget.buyItem())"/>
+			<aop:after method="afterAdvice" pointcut="execution(* t_tok03.*Target.buy*(..))"/>
+			<aop:around method="aroundAdvice" pointcut="execution(* t_tok03.*Target.buy*(..))"/>
+		</aop:aspect>
+	</aop:config>
+	
+	<context:annotation-config></context:annotation-config>
+	
+	
+	<bean id = "student" class="t_tok04.Student" 
+		init-method="init"
+		destroy-method="cleanUp"
+		>
+		<property name="name" value="스프링"></property>
+	</bean>
+	
+</beans>
+
+
+
+
+
+
+
+
+
+
+
