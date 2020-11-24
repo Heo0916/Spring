@@ -1,0 +1,10 @@
+package com.myway.tok.mybatis;
+
+import org.springframework.stereotype.Controller;
+
+public class MybatisController {
+	
+	@Controller
+	public class 
+
+}

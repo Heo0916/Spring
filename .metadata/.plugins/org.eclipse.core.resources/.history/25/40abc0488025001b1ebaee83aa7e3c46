@@ -1,0 +1,11 @@
+package com.myway.tok.mybatis;
+
+import org.springframework.stereotype.Service;
+
+public class MybatisService {
+
+	@Service
+	public class MybatisService{
+		private MybatisDao myBatisDao
+	}
+}

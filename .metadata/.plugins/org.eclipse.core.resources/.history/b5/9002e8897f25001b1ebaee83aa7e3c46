@@ -1,0 +1,20 @@
+package com.myway.tok.mybatis;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+
+import com.myway.tok.model.Student;
+
+public class MybatisDaoImpl implements MybatisDao{
+
+	@Autowired
+	private SqlSession sqlSession;
+	
+	@Override
+	public List<Student> findAllStudent() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}

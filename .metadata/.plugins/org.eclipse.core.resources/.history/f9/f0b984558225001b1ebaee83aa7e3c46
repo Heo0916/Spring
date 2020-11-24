@@ -1,0 +1,5 @@
+package com.myway.tok.mybatis;
+
+public interface MybatisDao {
+
+}

@@ -1,0 +1,9 @@
+package com.myway.tok.mybatis;
+
+import java.util.List;
+
+import com.myway.tok.model.Student;
+
+public interface MybatisDao {
+	public List<Student> findAllStudent();
+}
